@@ -8,6 +8,7 @@ func merge(a []int, l, m, r int, buf []int) {
 		if a[i] <= a[j] {
 			buf[k] = a[i]
 			i++
+
 		} else {
 			buf[k] = a[j]
 			j++
@@ -44,15 +45,25 @@ func mergeSort(a []int) {
 			}
 			if m < r {
 				merge(a, l, m, r, buf)
-				iter++
-				fmt.Println("Итерация", iter, ":", a)
+				
 			}
 		}
+		iter++
+		fmt.Printf("Итерация %d (кучки по %d): ", iter, width*2)
+			for i := 0; i < n; i += width * 2 {
+				end := i + width * 2
+				if end > n {
+					end = n
+				}
+				fmt.Print(a[i:end], " ")
+			}
+			fmt.Println()
 	}
 }
 
 func main() {
-	arr := []int{64, 25, 12, 22, 11}
+	arr := []int{64, 25, 12, 22, 11, 5, 30, 28, 10, 4, 25, 24, 23, 10, 5, 2}
+	//64, 25, 12, 22, 11, 5, 30, 28, 10, 4, 25, 24, 23, 10, 5, 2
 
 	fmt.Println("Исходный массив:", arr)
 

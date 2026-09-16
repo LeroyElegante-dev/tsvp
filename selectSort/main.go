@@ -16,6 +16,7 @@ func selectionSort(arr []int) {
 		}
 
 		if minIdx != i {
+			fmt.Printf("Меняем %d и %d: ", arr[i], arr[minIdx])
 			arr[i], arr[minIdx] = arr[minIdx], arr[i]
 		}
 		iter++
