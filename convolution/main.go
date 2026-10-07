@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-const Pi = 3.1415
+const Pi = math.Pi
 
 type Complex struct {
 	Re float64
@@ -109,7 +109,7 @@ func dftForward(f []Complex) []Complex {
 	for k := 0; k < n; k++ {
 		sum := Complex{}
 		for j := 0; j < n; j++ {
-			w := expI(-2 * Pi * float64(k*j) / float64(n))
+			w := expI(-2 * Pi * float64(k) * float64(j) / float64(n))
 			sum = add(sum, mul(w, f[j]))
 		}
 		A[k] = mulReal(sum, invN)
@@ -123,7 +123,7 @@ func dftInverse(A []Complex) []Complex {
 	for k := 0; k < n; k++ {
 		sum := Complex{}
 		for j := 0; j < n; j++ {
-			w := expI(2 * Pi * float64(k*j) / float64(n))
+			w := expI(2 * Pi * float64(k) * float64(j) / float64(n))
 			sum = add(sum, mul(w, A[j]))
 		}
 		f[k] = sum
